@@ -8,8 +8,8 @@
     "Globox_Z"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/fireplacemode",
+    "sources": "https://github.com/Globox1997/FireplaceMode"
   },
   "license": "MIT",
   "icon": "assets/fireplacemode/icon.png",
