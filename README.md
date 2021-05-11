@@ -1,9 +1,8 @@
-# Fabric Example Mod
+# FireplaceMode
+FireplaceMode removes the save button if the player is not close to a fireplace for a rpg style feeling.
 
-## Setup
+### Installation
+FireplaceMode is a mod built for the [Fabric Loader](https://fabricmc.net/). It requires [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api) to be installed separately; all other dependencies are installed with the mod.
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
-
-## License
-
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+### License
+FireplaceMode is licensed under MIT.
