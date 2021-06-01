@@ -15,9 +15,14 @@
   "icon": "assets/fireplacemode/icon.png",
   "environment": "*",
   "entrypoints": {
-    "main": [],
-    "client": [
+    "main": [
       "net.fireplacemode.FireplaceMain"
+    ],
+    "client": [
+      "net.fireplacemode.FireplaceClient"
+    ],
+    "modmenu": [
+      "net.fireplacemode.config.ModMenuIntegration"
     ]
   },
   "mixins": [

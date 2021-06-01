@@ -4,12 +4,12 @@
   "package": "net.fireplacemode.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "PlayerManagerMixin",
-    "CommandManagerMixin"
+    "MinecraftServerMixin"
   ],
   "client": [
     "MinecraftClientMixin",
-    "GameMenuScreenMixin"
+    "GameMenuScreenMixin",
+    "InGameHudMixin"
   ],
   "injectors": {
     "defaultRequire": 1
