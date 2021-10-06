@@ -23,16 +23,13 @@ public abstract class GameMenuScreenMixin extends Screen {
 
     @Inject(method = "initWidgets", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/client/MinecraftClient;isIntegratedServerRunning()Z"), cancellable = true)
     private void initWidgetsMixin(CallbackInfo info) {
-        if (this.client.player != null && !this.client.player.isCreative() && !this.client.player.isSpectator()
-                && this.client.player.world.getGameRules().getBoolean(FireplaceMain.FIREPLACE_MODE)) {
+        if (this.client.player != null && !this.client.player.isCreative() && !this.client.player.isSpectator() && this.client.player.world.getGameRules().getBoolean(FireplaceMain.FIREPLACE_MODE)) {
             int heatingRange = 3;
             boolean isCampfireNear = false;
             for (int i = -heatingRange; i < heatingRange + 1; i++) {
                 for (int u = -heatingRange; u < heatingRange + 1; u++) {
                     for (int k = -heatingRange - 1; k < heatingRange; k++) {
-                        BlockPos pos = new BlockPos(this.client.player.getBlockPos().getX() + i,
-                                this.client.player.getBlockPos().getY() + k,
-                                this.client.player.getBlockPos().getZ() + u);
+                        BlockPos pos = new BlockPos(this.client.player.getBlockPos().getX() + i, this.client.player.getBlockPos().getY() + k, this.client.player.getBlockPos().getZ() + u);
                         if (this.client.player.world.getBlockState(pos).isIn(FireplaceMain.SAVE_BLOCK)) {
                             isCampfireNear = true;
                             break;

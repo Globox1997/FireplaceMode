@@ -1,4 +1,6 @@
 {
     "text.autoconfig.fireplacemode.title": "FireplaceMode Config",
-    "text.autoconfig.fireplacemode.option.hud_save": "Hud Save"
+    "text.autoconfig.fireplacemode.option.hud_save": "Hud Save",
+
+    "text.fireplacemode.save": "Saving world"
 }

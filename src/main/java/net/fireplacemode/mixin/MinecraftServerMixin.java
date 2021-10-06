@@ -38,8 +38,7 @@ public class MinecraftServerMixin {
             Iterator<ServerPlayerEntity> var2 = playerManager.getPlayerList().iterator();
             while (var2.hasNext()) {
                 ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity) var2.next();
-                ServerPlayNetworking.send(serverPlayerEntity, FireplaceClient.SAVING_PACKET,
-                        new PacketByteBuf(Unpooled.buffer()));
+                ServerPlayNetworking.send(serverPlayerEntity, FireplaceClient.SAVING_PACKET, new PacketByteBuf(Unpooled.buffer()));
             }
         }
     }

@@ -32,15 +32,13 @@ public class MinecraftClientMixin {
     @ModifyVariable(method = "Lnet/minecraft/client/MinecraftClient;render(Z)V", at = @At(value = "FIELD", target = "Lnet/minecraft/client/MinecraftClient;paused:Z", ordinal = 1), ordinal = 1)
     private boolean renderMixin(boolean original) {
         if (player != null) {
-            if (this.paused != original && !player.isCreative() && !player.isSpectator()
-                    && this.player.world.getGameRules().getBoolean(FireplaceMain.FIREPLACE_MODE)) {
+            if (this.paused != original && !player.isCreative() && !player.isSpectator() && this.player.world.getGameRules().getBoolean(FireplaceMain.FIREPLACE_MODE)) {
                 int heatingRange = 3;
                 boolean isCampfireNear = false;
                 for (int i = -heatingRange; i < heatingRange + 1; i++) {
                     for (int u = -heatingRange; u < heatingRange + 1; u++) {
                         for (int k = -heatingRange - 1; k < heatingRange; k++) {
-                            BlockPos pos = new BlockPos(player.getBlockPos().getX() + i,
-                                    player.getBlockPos().getY() + k, player.getBlockPos().getZ() + u);
+                            BlockPos pos = new BlockPos(player.getBlockPos().getX() + i, player.getBlockPos().getY() + k, player.getBlockPos().getZ() + u);
                             if (player.world.getBlockState(pos).isIn(FireplaceMain.SAVE_BLOCK)) {
                                 isCampfireNear = true;
                                 break;
