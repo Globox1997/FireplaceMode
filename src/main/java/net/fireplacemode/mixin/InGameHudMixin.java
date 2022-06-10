@@ -19,7 +19,7 @@ import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.text.Text;
 
 @Environment(EnvType.CLIENT)
 @Mixin(InGameHud.class)
@@ -45,7 +45,7 @@ public abstract class InGameHudMixin extends DrawableHelper implements HudAccess
             int scaledHeight = client.getWindow().getScaledHeight();
             int color = 16777215 + (saveTicker << 24);
             RenderSystem.enableBlend();
-            this.getTextRenderer().drawWithShadow(matrixStack, new TranslatableText("text.fireplacemode.save"), scaledWidth * 0.01F, scaledHeight * 0.95F, color < 0 ? color : -1);
+            this.getTextRenderer().drawWithShadow(matrixStack, Text.translatable("text.fireplacemode.save"), scaledWidth * 0.01F, scaledHeight * 0.95F, color < 0 ? color : -1);
             RenderSystem.disableBlend();
             saveTicker--;
         }
