@@ -21,7 +21,7 @@ public abstract class GameMenuScreenMixin extends Screen {
         super(title);
     }
 
-    @Inject(method = "initWidgets", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/client/MinecraftClient;isIntegratedServerRunning()Z"), cancellable = true)
+    @Inject(method = "initWidgets", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/client/MinecraftClient;isInSingleplayer()Z", ordinal = 0), cancellable = true)
     private void initWidgetsMixin(CallbackInfo info) {
         if (this.client.player != null && !this.client.player.isCreative() && !this.client.player.isSpectator() && this.client.player.world.getGameRules().getBoolean(FireplaceMain.FIREPLACE_MODE)) {
             int heatingRange = 3;
