@@ -1,4 +1,4 @@
-package net.fireplacemode.mixin;
+package net.fireplacemode.mixin.client;
 
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;

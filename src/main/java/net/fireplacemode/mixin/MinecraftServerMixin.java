@@ -14,13 +14,13 @@ import io.netty.buffer.Unpooled;
 import org.spongepowered.asm.mixin.injection.At;
 
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.fireplacemode.FireplaceClient;
+import net.fireplacemode.FireplaceMain;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.PlayerManager;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.World;
 
 @Mixin(MinecraftServer.class)
@@ -33,12 +33,12 @@ public class MinecraftServerMixin {
     private Map<RegistryKey<World>, ServerWorld> worlds;
 
     @Inject(method = "save", at = @At(value = "HEAD"))
-    private void saveMixin(boolean suppressLogs, boolean bl, boolean bl2, CallbackInfoReturnable<Boolean> info) {
-        if (FireplaceClient.CONFIG.hud_save) {
+    private void saveMixin(boolean suppressLogs, boolean flush, boolean force, CallbackInfoReturnable<Boolean> info) {
+        if (FireplaceMain.CONFIG.hudSave) {
             Iterator<ServerPlayerEntity> var2 = playerManager.getPlayerList().iterator();
             while (var2.hasNext()) {
                 ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity) var2.next();
-                ServerPlayNetworking.send(serverPlayerEntity, FireplaceClient.SAVING_PACKET, new PacketByteBuf(Unpooled.buffer()));
+                ServerPlayNetworking.send(serverPlayerEntity, FireplaceMain.SAVING_PACKET, new PacketByteBuf(Unpooled.buffer()));
             }
         }
     }

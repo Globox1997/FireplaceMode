@@ -7,9 +7,9 @@
     "MinecraftServerMixin"
   ],
   "client": [
-    "MinecraftClientMixin",
-    "GameMenuScreenMixin",
-    "InGameHudMixin"
+    "client.MinecraftClientMixin",
+    "client.GameMenuScreenMixin",
+    "client.InGameHudMixin"
   ],
   "injectors": {
     "defaultRequire": 1

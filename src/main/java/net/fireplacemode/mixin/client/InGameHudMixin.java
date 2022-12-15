@@ -1,4 +1,4 @@
-package net.fireplacemode.mixin;
+package net.fireplacemode.mixin.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 
