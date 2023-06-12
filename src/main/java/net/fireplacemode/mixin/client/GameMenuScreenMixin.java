@@ -58,7 +58,7 @@ public abstract class GameMenuScreenMixin extends Screen {
             for (int u = -heatingRange; u < heatingRange + 1; u++) {
                 for (int k = -heatingRange - 1; k < heatingRange; k++) {
                     BlockPos pos = new BlockPos(this.client.player.getBlockPos().getX() + i, this.client.player.getBlockPos().getY() + k, this.client.player.getBlockPos().getZ() + u);
-                    if (this.client.player.world.getBlockState(pos).isIn(FireplaceMain.SAVE_BLOCK)) {
+                    if (this.client.player.getWorld().getBlockState(pos).isIn(FireplaceMain.SAVE_BLOCK)) {
                         isCampfireNear = true;
                         break;
                     }

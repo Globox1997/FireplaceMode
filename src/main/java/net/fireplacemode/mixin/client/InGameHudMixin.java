@@ -15,15 +15,14 @@ import net.fireplacemode.access.HudAccess;
 import net.fabricmc.api.EnvType;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
-import net.minecraft.client.gui.DrawableHelper;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.Text;
 
 @Environment(EnvType.CLIENT)
 @Mixin(InGameHud.class)
-public abstract class InGameHudMixin extends DrawableHelper implements HudAccess {
+public abstract class InGameHudMixin implements HudAccess {
 
     @Shadow
     @Final
@@ -36,8 +35,8 @@ public abstract class InGameHudMixin extends DrawableHelper implements HudAccess
         this.client = client;
     }
 
-    @Inject(method = "Lnet/minecraft/client/gui/hud/InGameHud;render(Lnet/minecraft/client/util/math/MatrixStack;F)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/InGameHud;renderHotbar(FLnet/minecraft/client/util/math/MatrixStack;)V"))
-    private void renderMixin(MatrixStack matrixStack, float f, CallbackInfo info) {
+    @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/InGameHud;renderHotbar(FLnet/minecraft/client/gui/DrawContext;)V"))
+    private void renderMixin(DrawContext context, float f, CallbackInfo info) {
         // Gets ticked 60 times per second
         PlayerEntity playerEntity = client.player;
         if (!playerEntity.isCreative() && !playerEntity.isSpectator() && saveTicker > 127) {
@@ -45,7 +44,7 @@ public abstract class InGameHudMixin extends DrawableHelper implements HudAccess
             int scaledHeight = client.getWindow().getScaledHeight();
             int color = 16777215 + (saveTicker << 24);
             RenderSystem.enableBlend();
-            this.getTextRenderer().drawWithShadow(matrixStack, Text.translatable("text.fireplacemode.save"), scaledWidth * 0.01F, scaledHeight * 0.95F, color < 0 ? color : -1);
+            context.drawTextWithShadow(client.textRenderer, Text.translatable("text.fireplacemode.save"), (int) (scaledWidth * 0.01F), (int) (scaledHeight * 0.95F), color < 0 ? color : -1);
             RenderSystem.disableBlend();
             saveTicker--;
         }
